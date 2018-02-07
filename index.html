@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="babel.min.js"></script>
+  <script src="react.js"></script>
+  <script src="react-dom.js"></script>
+  <script type="text/babel">
+
+    function Page() {
+        return (
+          <div className="page">
+            <Header />
+            <Table />
+          </div>
+        );
+    }
+
+    function Header() {
+      return (
+        <header>
+          <h1>FreeCodeCamp Leaderboard</h1>
+        </header>  
+      )
+    }
+
+    /* Para cada camper en datos obtenidos voy a construir una fila*/
+    function Filas() {
+      return (
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>zdflower</td>
+            <td>3</td>
+            <td>338</td>
+          </tr>
+        </tbody>
+      )
+    }
+
+    function Table() {
+      return (
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>nombre</th>
+              <th>recent points</th>
+              <th>all points</th>
+             </tr>
+          </thead>
+          <Filas />
+        </table>
+      )
+    }
+
+    ReactDOM.render(<Page />, document.getElementById("root"));
+
+  </script>
+</body>
+
+</html>
