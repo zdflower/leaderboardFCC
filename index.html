@@ -21,7 +21,7 @@
         return (
           <div className="page">
             <Header />
-            <Table />
+            <Table recent={() => { return }} all={() => { return }} datos={[{"name":"zdflower", "recent": 3, "all": 338}]} />
           </div>
         );
     }
@@ -34,32 +34,37 @@
       )
     }
 
-    /* Para cada camper en datos obtenidos voy a construir una fila*/
-    function Filas() {
+
+    function Filas(props) {
       return (
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>zdflower</td>
-            <td>3</td>
-            <td>338</td>
-          </tr>
+          {props.datos.map((fila, i) => {
+            return (
+              <tr key={fila.name}>
+                <td> {i + 1}</td>
+                <td>{fila.name}</td>
+                <td>{fila.recent}</td>
+                <td>{fila.all}</td>
+              </tr>
+            );
+           })
+          }
         </tbody>
       )
     }
 
-    function Table() {
+    function Table(props) {
       return (
         <table>
           <thead>
             <tr>
               <th>#</th>
-              <th>nombre</th>
-              <th>recent points</th>
-              <th>all points</th>
+              <th>Name</th>
+              <th> <span onClick={props.recent}>Recent points</span></th>
+              <th><span onClick={props.all}>All points</span></th>
              </tr>
           </thead>
-          <Filas />
+          <Filas datos={props.datos}/>
         </table>
       )
     }
