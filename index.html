@@ -73,30 +73,8 @@
       )
     }
 
-  /* Ver si puedo usar un componente funcional para las filas */
-  class Filas extends React.Component { 
-    render(){
-      return (
-        <tbody>
-          { 
-          
-          this.props.data.map((fila, i) => {
-          return (
-              <tr key={fila.username}>
-                <td> {i + 1}</td>
-                <td><img src={fila.img} />{fila.username}</td>
-                <td>{fila.recent}</td>
-                <td>{fila.alltime}</td>
-              </tr>
-            );
-           })
-          }
-        </tbody>
-      )      
-  }
-}
 
-    function Table(props) {
+  function Table(props) {
       return (
         <table>
           <thead>
@@ -116,6 +94,26 @@
         </table>
       )
     }
+
+
+  function Filas (props) { 
+    return (
+        <tbody>
+          { 
+          props.data.map((fila, i) => {
+          return (
+              <tr key={fila.username}>
+                <td> {i + 1}</td>
+                <td><img src={fila.img} />{fila.username}</td>
+                <td>{fila.recent}</td>
+                <td>{fila.alltime}</td>
+              </tr>
+            );
+           })
+          }
+        </tbody>
+      )      
+  }
 
     ReactDOM.render(<Page />, document.getElementById("root"));
 
