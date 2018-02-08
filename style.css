@@ -3,6 +3,10 @@ td {
   text-align: center;
 }
 
-thead {
+thead, header {
   background-color: pink;
+}
+
+img {
+  width: 5%;
 }
