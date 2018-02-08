@@ -17,14 +17,39 @@
   <script src="react-dom.js"></script>
   <script type="text/babel">
 
-    function Page() {
+    const alltime = [{"username":"sjames1958gm","img":"https://avatars1.githubusercontent.com/u/4639625?v=4","alltime":8597,"recent":116,"lastUpdate":"2018-02-03T18:14:36.182Z"},{"username":"Manish-Giri","img":"https://avatars2.githubusercontent.com/u/11348778?v=4","alltime":6465,"recent":9,"lastUpdate":"2018-02-03T19:01:33.088Z"},{"username":"anthonygallina1","img":"https://avatars.githubusercontent.com/u/11003055?v=3","alltime":5477,"recent":24,"lastUpdate":"2018-02-03T19:06:48.785Z"}];
+
+    const recent = [{"username":"sjames1958gm","img":"https://avatars1.githubusercontent.com/u/4639625?v=4","alltime":8597,"recent":116,"lastUpdate":"2018-02-03T18:14:36.182Z"},{"username":"rahsheen","img":"https://avatars1.githubusercontent.com/u/4641959?v=4","alltime":1053,"recent":82,"lastUpdate":"2018-02-03T18:14:37.726Z"},{"username":"kbaig","img":"https://avatars3.githubusercontent.com/u/24844214?v=4","alltime":246,"recent":72,"lastUpdate":"2018-02-03T19:13:34.200Z"},{"username":"zcassini","img":"https://avatars1.githubusercontent.com/u/373576?v=4","alltime":1634,"recent":67,"lastUpdate":"2018-02-03T19:13:34.201Z"}];
+
+    class Page extends React.Component {
+      constructor(){
+        super();
+        this.state = {
+                       order: 'recent'
+        }
+      }
+      
+      setOrderRecent() {
+          this.setState({
+          order: 'recent'
+        });
+      }
+
+      setOrderAlltime() {
+          this.setState({
+          order: 'alltime'
+        });
+      }
+
+      render() {
         return (
           <div className="page">
             <Header />
-            <Table recent={() => { return }} all={() => { return }} datos={[{"name":"zdflower", "recent": 3, "all": 338}]} />
+            <Table recent= {() => this.setOrderRecent } all={() => this.setOrderAlltime } orden={this.state.order} />
           </div>
         );
-    }
+      }
+  }
 
     function Header() {
       return (
@@ -34,24 +59,30 @@
       )
     }
 
+  class Filas extends React.Component { 
+    render(){
+      let data = [];
+      (this.props.orden === 'recent') ? data = recent : data = alltime;
 
-    function Filas(props) {
       return (
         <tbody>
-          {props.datos.map((fila, i) => {
-            return (
-              <tr key={fila.name}>
+          { 
+          
+          data.map((fila, i) => {
+          return (
+              <tr key={fila.username}>
                 <td> {i + 1}</td>
-                <td>{fila.name}</td>
+                <td><img src={fila.img} />{fila.username}</td>
                 <td>{fila.recent}</td>
-                <td>{fila.all}</td>
+                <td>{fila.alltime}</td>
               </tr>
             );
            })
           }
         </tbody>
-      )
-    }
+      )      
+  }
+}
 
     function Table(props) {
       return (
@@ -60,11 +91,16 @@
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th> <span onClick={props.recent}>Recent points</span></th>
-              <th><span onClick={props.all}>All points</span></th>
+              { 
+                (props.orden === 'recent')? <th><span onClick={props.recent()}>Recent points *</span></th>
+                 : <th> <span onClick={props.recent()}>Recent points</span></th>
+              }
+              {
+                (props.orden === 'alltime')? <th><span onClick={props.all()}>All points *</span></th> : <th><span onClick={props.all()}>All points </span></th>
+              }
              </tr>
           </thead>
-          <Filas datos={props.datos}/>
+          <Filas orden={props.orden}/>
         </table>
       )
     }
