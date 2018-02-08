@@ -29,13 +29,13 @@
         }
       }
       
-      setOrderRecent() {
+      handleOrderRecent() {
           this.setState({
           order: 'recent'
         });
       }
 
-      setOrderAlltime() {
+      handleOrderAlltime() {
           this.setState({
           order: 'alltime'
         });
@@ -45,7 +45,7 @@
         return (
           <div className="page">
             <Header />
-            <Table recent= {() => this.setOrderRecent } all={() => this.setOrderAlltime } orden={this.state.order} />
+            <Table onClickRecent= {() => this.handleOrderRecent() } onClickAlltime={() => this.handleOrderAlltime() } order={this.state.order} />
           </div>
         );
       }
@@ -59,10 +59,11 @@
       )
     }
 
+  /* Ver si puedo usar un componente funcional para las filas */
   class Filas extends React.Component { 
     render(){
       let data = [];
-      (this.props.orden === 'recent') ? data = recent : data = alltime;
+      (this.props.order === 'recent') ? data = recent : data = alltime;
 
       return (
         <tbody>
@@ -92,15 +93,15 @@
               <th>#</th>
               <th>Name</th>
               { 
-                (props.orden === 'recent')? <th><span onClick={props.recent()}>Recent points *</span></th>
-                 : <th> <span onClick={props.recent()}>Recent points</span></th>
+                (props.order === 'recent')? <th><span onClick={props.onClickRecent}>Recent points *</span></th>
+                 : <th> <span onClick={props.onClickRecent}>Recent points</span></th>
               }
               {
-                (props.orden === 'alltime')? <th><span onClick={props.all()}>All points *</span></th> : <th><span onClick={props.all()}>All points </span></th>
+                (props.order === 'alltime')? <th><span onClick={props.onClickAlltime}>All points *</span></th> : <th><span onClick={props.onClickAlltime}>All points </span></th>
               }
              </tr>
           </thead>
-          <Filas orden={props.orden}/>
+          <Filas order={props.order}/>
         </table>
       )
     }
