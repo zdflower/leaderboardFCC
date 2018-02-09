@@ -1,7 +1,7 @@
 # leaderboardFCC
 React project Free Code Camp
 
-Project diary: [start](https://zdflower.github.io/2018/02/07/Start-FCC-Project-Leaderboard.html), [part1](https://zdflower.github.io/2018/02/07/FCC-Project-Leaderboard-Continued.html), [part2](https://zdflower.github.io/2018/02/08/FCC-Project-Leaderboard-Continued-Part-2.html).
+Project diary: [start](https://zdflower.github.io/2018/02/07/Start-FCC-Project-Leaderboard.html), [part1](https://zdflower.github.io/2018/02/07/FCC-Project-Leaderboard-Continued.html), [part2](https://zdflower.github.io/2018/02/08/FCC-Project-Leaderboard-Continued-Part-2.html), [part3](https://zdflower.github.io/2018/02/08/FCC-Project-Leaderboard-Continued-Part-3.html), [part4](https://zdflower.github.io/2018/02/08/FCC-Project-Leaderboard-Continued-Part-4.html).
 
 ### User stories
 
@@ -21,3 +21,5 @@ Here are the user stories from [https://www.freecodecamp.org/challenges/build-a-
 * [Sass Shop exercises](https://github.com/jewlofthelotus/SassShop-exercises)
 * [Learn Sass](https://github.com/workshopper/learn-sass)
 * [Nodeschool](https://nodeschool.io/)
+* [Client-side_web_APIs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs)
+* [Clean Code Javascript](https://github.com/ryanmcdermott/clean-code-javascript)
